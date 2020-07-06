@@ -117,14 +117,13 @@ def exponent_fix(input_file, output):
                     writer.writerow(newrow)
     return output
 
-def send_mail(subj, body, bifogad_fil, recipients=[], sender='clinicalgenomics@gu.se'):
+def send_mail(subj, body, bifogad_fil, recipients=[], sender='NPM1@gu.se'):
     from marrow.mailer import Mailer, Message
     """Send mail to specified recipients."""
-    recipients = ['alvar.almstedt@gu.se', *recipients]
-    #recipients = ['alvar.almstedt@gu.se'] # Remove when done
+    recipients = [*recipients]
     mailer = Mailer(dict(
         transport=dict(use='smtp',
-                       host='smtp.gu.se')))
+                       host='change.me.se')))
 
     mailer.start()
     message = Message(
@@ -155,14 +154,16 @@ if __name__ == "__main__":
     print(all_csv_files)
     merge_csv(all_csv_files[0])
     to_mail = merge_csv(all_csv_files[1], f"NPM1_{run_name}_" + datetime.datetime.now().strftime("%y%m%d") + ".csv")
-    mailsubject=f"NPM1 analysrapport med avseende körning: {run_name}"
+    # Customise these to your liking
+    mailsubject=f"NPM1 analysis report on run: {run_name}"
     mailbody = f"""
-Din NPM1-analys av körning {run_name} är färdig. Rapporten ligger bifogad till detta mail i CSV-format. Dessa kan enklast öppnas i Excel eller motsvarande kalkylarksmjukvara.
+Your NPM1 analysis is complete!
 
-Om någonting ser konstigt ut med analysen, skriv till alvar.almstedt@gu.se eller svara på detta mail för att nå alla vid Clinical Genomics Göteborg.
+The resulting csv is attached to this email
 
-Ha en fortsatt trevlig dag!
-/Clinical Genomics Göteborg\n\n
+Have a pleasant day!
+/Clinical Genomics Gothenburg\n\n
     """
-    send_mail(mailsubject, mailbody, to_mail, email)
-    exponent_fix(to_mail, f"CLC_{to_mail}")
+    if len(email) > 0:
+        send_mail(mailsubject, mailbody, to_mail, email)
+        exponent_fix(to_mail, f"CLC_{to_mail}")
