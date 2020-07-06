@@ -1,0 +1,9 @@
+name: NPM1_DeepSeq
+channels:
+    - bioconda
+dependencies:
+    - pear=0.9.6
+    - fastx_toolkit=0.0.14
+    - bwa=0.5.9
+    - picard=2.3.0
+    - samtools=1.0
