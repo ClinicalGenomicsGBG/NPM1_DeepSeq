@@ -11,6 +11,19 @@ import logging
 logging.basicConfig(filename="logging.stdout", filemode='w', level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 
+def check_ref(reference):
+    logging.info("Checking reference...")
+    if not os.path.isfile(reference):
+        logging.error(f"Reference {reference} not found. Exiting")
+        exit
+    elif not os.path.isfile(reference + ".ann"):
+        my_env = os.environ.copy()
+        args = ["bwa", "index", "-a", "bwtsw", reference]
+        subprocess.run(args, shell=False, env=my_env)
+        return reference
+    return reference
+    
+
 def run_fq_qual(fname):
     
     my_env = os.environ.copy()
@@ -32,7 +45,7 @@ def run_fq_qual(fname):
 
 def run_aln(fname):
     
-    ref = "/medstore/External_References/hg19/Homo_sapiens_sequence_hg19.fasta"
+    #ref = "/medstore/External_References/hg19/Homo_sapiens_sequence_hg19.fasta"
     my_env = os.environ.copy()
     args = ["bwa", "aln", "-f", fname.rsplit(".", 1)[0] + ".sai", "-t", str(cpu_count()), ref, fname]
     
@@ -45,7 +58,7 @@ def run_aln(fname):
 
 def run_samse(fname):
 
-    ref = "/medstore/External_References/hg19/bwa_v5_index/Homo_sapiens_sequence_hg19.fasta"
+    #ref = "/medstore/External_References/hg19/bwa_v5_index/Homo_sapiens_sequence_hg19.fasta"
     my_env = os.environ.copy()
     args = ["bwa", "samse", "-f", fname.rsplit(".", 1)[0] + ".sam", ref, fname, fname.rsplit(".", 1)[0] + ".trim"]
 
@@ -67,9 +80,10 @@ def run_samtools_view(fname):
 
 def run_picard(fname):
 
-    picdir = "/apps/bio/apps/picard/2.1.0/picard.jar"
+    #picdir = "/apps/bio/apps/picard/2.1.0/picard.jar"
     my_env = os.environ.copy()
-    args = ["java", "-Xmx2g", "-jar", picdir, "SortSam", "INPUT=", fname, "OUTPUT=", fname.rsplit(".", 1)[0] + ".sorted.bam", "SORT_ORDER=coordinate", "VALIDATION_STRINGENCY=LENIENT"]
+    #args = ["java", "-Xmx2g", "-jar", "picard", "SortSam", "INPUT=", fname, "OUTPUT=", fname.rsplit(".", 1)[0] + ".sorted.bam", "SORT_ORDER=coordinate", "VALIDATION_STRINGENCY=LENIENT"]
+    args = ["picard", "SortSam", "INPUT=", fname, "OUTPUT=", fname.rsplit(".", 1)[0] + ".sorted.bam", "SORT_ORDER=coordinate", "VALIDATION_STRINGENCY=LENIENT"]
 
     subprocess.call(args, shell=False, env=my_env)
     logging.info(f"picard sortsam was run with the following parameters:\n{args}")
@@ -93,7 +107,10 @@ if __name__ == "__main__":
         indir = argv[1]   
     except IndexError:
         indir = os.getcwd()
-    
+   
+    ###
+    ref = check_ref(argv[2])
+    ###
     file_list = glob.glob(os.path.join(indir, "*.fastq.pear.assembled.fastq"))
     num_proc = int(cpu_count() / 2)
     p = Pool(num_proc)
