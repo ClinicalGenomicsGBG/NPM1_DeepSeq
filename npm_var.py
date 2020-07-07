@@ -17,8 +17,8 @@ def main_worker(bamfile):
     #wt_dict = npm_seq.wt_dict
     wildtypes = npm_seq.wildtypes # This line is new
     mut_list = npm_seq.mut_list
-
-    subprocess.call(["samtools", "view", bamfile, "-o", bamfile.rsplit(".", 1)[0] + "_tmp.sam"], shell=False, env=my_env)
+    print(f"running command: {['samtools', 'view', bamfile, '-o', bamfile.rsplit('.', 1)[0] + '_tmp.sam']}")
+    subprocess.call(["samtools", "view", "-o", bamfile.rsplit(".", 1)[0] + "_tmp.sam", bamfile], shell=False, env=my_env)
     tmpsam = os.path.abspath(bamfile.rsplit(".", 1)[0] + "_tmp.sam")
     filename = bamfile.rsplit("/", 1)[1]
     filename = filename.split(".", 1)[0]
@@ -140,7 +140,10 @@ if __name__ == "__main__":
     
     filelist = argv[1]
     run_name = str(argv[2]).rsplit("/", 5)[1]
-    email = list(argv[3].split(","))
+    try:    
+        email = list(argv[3].split(","))
+    except:
+        email = []
     with open(filelist, "r") as sorted:
         bam_list = sorted.read().splitlines()
     #print(bam_list)
