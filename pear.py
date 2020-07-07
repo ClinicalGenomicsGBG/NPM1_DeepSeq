@@ -15,11 +15,8 @@ def unzipper(infile):
         fqlist = iter(fastqs.readlines())
         fqzip = zip(fqlist, fqlist)
         for filepairs in fqzip:
-            #print(filepairs)
             file1 = filepairs[0].rstrip()
-            print(file1)
             file2 = filepairs[1].rstrip()
-            print(file2)
             with gzip.open(file1, "rb") as f_in, open(f"uncompressed_{path.basename(file1)}"[:-3], "wb+") as f_out:
                 shutil.copyfileobj(f_in, f_out)
                 filelist.append(f"uncompressed_{path.basename(file1)}"[:-3])
@@ -32,12 +29,9 @@ def unzipper(infile):
 def run_pear(fq):
     #fq = zip(fq, fq)
     my_env = environ.copy()
-    print(fq)
     for fileitem in fq[::2]:
         file1 = str(fq.pop(0))
         file2 = str(fq.pop(0))
-        print(file1)
-        print(file2)
         #call(f"pear -f {file1} -r {file2} -j 16 -o {file1[:-3] + '.pear'}", shell=True)
         call(["pear", "-f", file1, "-r", file2, "-j", str(cpu_count()), "-o", file1 + ".pear"], shell=False, env=my_env)
 
