@@ -8,3 +8,7 @@ dependencies:
     - bwa=0.5.9
     - picard=2.3.0
     - samtools=1.0
+    - pandas=0.24.2=py36he6710b0_0
+    - pip=19.1.1=py36_0
+    - pip:
+        - marrow.mailer==4.0.2
