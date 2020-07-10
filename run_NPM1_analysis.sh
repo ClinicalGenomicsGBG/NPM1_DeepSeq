@@ -14,6 +14,7 @@ echo ".. Done at `date`"
 #PYTHON=$(which python)
 
 DATE=$(date +"%Y_%m_%d_%H_%M_%S")
+DAY=$(date +"%Y%m%d")
 
 FASTQDIR=$1
 OUTDIR=$2
@@ -21,6 +22,8 @@ TMPDIR=$OUTDIR/tmp/NPM1_$DATE
 CSV_SAVELOC=$OUTDIR/csv
 REF=$3
 EMAILS=$4
+
+MYNAME=$(basename $FASTQDIR)
 
 script1=$scriptdir/pear.py
 script2=$scriptdir/pipeline_amplicon_pear.py
@@ -53,6 +56,17 @@ conda run -n NPM1_DeepSeq $script3 $TMPDIR/bamfiles.txt $FASTQDIR $EMAILS
 
 #copy relevant csv file to .. from cwd
 
+echo "Copy loop"
+filestocopy=$(ls $TMPDIR | grep ".csv")
+for csv in $filestocopy ; do
+    echo "Copying $csv to $OUTIDIR"
+    cp $csv $OUTDIR
+done
+
+echo "Copying single file to outdir"
+cp $TMPDIR/NPM1_all_samples.csv $OUTDIR
+
 #remove everything in tmpdir
+#rm -rf $TMPDIR
 
 echo "Done at `date` !"
