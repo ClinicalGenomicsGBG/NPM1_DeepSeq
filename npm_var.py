@@ -87,6 +87,7 @@ def merge_csv(filelist, outfilename="NPM1_" + datetime.datetime.now().strftime("
     #import datetime
     #today = datetime.datetime.now().strftime("%y%m%d")
     #outfilename = "NPM1_" + today + "_all_samples.csv"
+    #outfilename = "NPM1_all_samples.csv"
     with open(outfilename, "a+") as mergefile:
         for csvfile in filelist:
             cur_fn = csvfile.rsplit("/", 1)[1]
@@ -139,7 +140,10 @@ def send_mail(subj, body, bifogad_fil, recipients=[], sender='NPM1@gu.se'):
 if __name__ == "__main__":
     
     filelist = argv[1]
-    run_name = str(argv[2]).rsplit("/", 5)[1]
+    #this needs to go!
+    run_name = str(argv[2]).split("/")[-1]
+    #bleh!
+    
     try:    
         email = list(argv[3].split(","))
     except:
@@ -155,7 +159,7 @@ if __name__ == "__main__":
     print("dict length: " + str(len(work_done[0][2])) + "\n")
     all_csv_files = create_csv(work_done)
     print(all_csv_files)
-    merge_csv(all_csv_files[0])
+    merge_csv(all_csv_files[0], "NPM1_all_samples.csv")
     to_mail = merge_csv(all_csv_files[1], f"NPM1_{run_name}_" + datetime.datetime.now().strftime("%y%m%d") + ".csv")
     # Customise these to your liking
     mailsubject=f"NPM1 analysis report on run: {run_name}"
