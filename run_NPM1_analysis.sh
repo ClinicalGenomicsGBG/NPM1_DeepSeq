@@ -1,23 +1,59 @@
 #!/bin/bash -l
 
-#echo "$HOSTNAME"
+HELP="\nUsage: run_NPM1_analysis.sh [OPTIONS] 
+Options:\n
+    -f    [absolute path to directory containing fastq.gz files]
+
+    -o    [abolute path to output directory]
+
+    -r    [absolute path to human reference fasta]
+
+    -e    [email adress to be used]
+          (this option requires configuration)\n\n"
+
 
 scriptdir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-echo "SCRIPTDIR: $scriptdir"
-
-# Creates a Conda environment named NPM_DeepSeq which contains the required programs
-echo "Establishing conda environment at `date`"
-conda env create -f $scriptdir/environment.yaml 2> /dev/null
-echo ".. Done at `date`"
-
 DATE=$(date +"%Y_%m_%d_%H_%M_%S")
 
-FASTQDIR=$1
-OUTDIR=$2
+while getopts :f:o:r:e:h opt; do
+    case $opt in
+        f)
+            echo "-f (fastq directory) was input as $OPTARG"
+            FASTQDIR=$OPTARG
+        ;;
+        o)
+            echo "-o (output directory) was input as $OPTARG"
+            OUTDIR=$OPTARG
+        ;;
+        r)
+            echo "-r (reference fasta) was input as $OPTARG"
+            REF=$OPTARG
+        ;;
+        e)
+            echo "-e (email adress) was input as $OPTARG"
+            EMAILS=$OPTARG
+        ;;
+        h)
+            printf "$HELP"
+            exit 0
+        ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&1
+            echo "Type $0 -h for usage"
+            exit 1
+        ;;
+    esac
+done
+
+echo "Starting NPM1 anaysis on $HOSTNAME  ..."
+
+# Creates a Conda environment named NPM_DeepSeq which contains the required programs
+echo "Establishing conda environment at `date` ..."
+conda env create -f $scriptdir/environment.yaml 2> /dev/null
+echo "... Done at `date`"
+
 TMPDIR=$OUTDIR/tmp_NPM1_$DATE
-REF=$3
-EMAILS=$4
 
 MYNAME=$(basename $FASTQDIR)
 
