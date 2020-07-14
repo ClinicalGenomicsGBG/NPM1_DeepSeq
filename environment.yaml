@@ -1,6 +1,7 @@
 name: NPM1_DeepSeq
 channels:
     - bioconda
+    - conda-forge
 dependencies:
     - python=3.6
     - pear=0.9.6
