@@ -45,7 +45,6 @@ def run_fq_qual(fname):
 
 def run_aln(fname):
     
-    #ref = "/medstore/External_References/hg19/Homo_sapiens_sequence_hg19.fasta"
     my_env = os.environ.copy()
     args = ["bwa", "aln", "-f", fname.rsplit(".", 1)[0] + ".sai", "-t", str(cpu_count()), ref, fname]
     
@@ -58,7 +57,6 @@ def run_aln(fname):
 
 def run_samse(fname):
 
-    #ref = "/medstore/External_References/hg19/bwa_v5_index/Homo_sapiens_sequence_hg19.fasta"
     my_env = os.environ.copy()
     args = ["bwa", "samse", "-f", fname.rsplit(".", 1)[0] + ".sam", ref, fname, fname.rsplit(".", 1)[0] + ".trim"]
 
@@ -80,9 +78,7 @@ def run_samtools_view(fname):
 
 def run_picard(fname):
 
-    #picdir = "/apps/bio/apps/picard/2.1.0/picard.jar"
     my_env = os.environ.copy()
-    #args = ["java", "-Xmx2g", "-jar", "picard", "SortSam", "INPUT=", fname, "OUTPUT=", fname.rsplit(".", 1)[0] + ".sorted.bam", "SORT_ORDER=coordinate", "VALIDATION_STRINGENCY=LENIENT"]
     args = ["picard", "SortSam", "INPUT=", fname, "OUTPUT=", fname.rsplit(".", 1)[0] + ".sorted.bam", "SORT_ORDER=coordinate", "VALIDATION_STRINGENCY=LENIENT"]
 
     subprocess.call(args, shell=False, env=my_env)
@@ -108,9 +104,9 @@ if __name__ == "__main__":
     except IndexError:
         indir = os.getcwd()
    
-    ###
+    ### ref has to be set or things will crash
     ref = check_ref(argv[2])
-    ###
+
     file_list = glob.glob(os.path.join(indir, "*.fastq.pear.assembled.fastq"))
     num_proc = int(cpu_count() / 2)
     p = Pool(num_proc)
@@ -118,7 +114,6 @@ if __name__ == "__main__":
     aln_ret = []
     for i in dot_trim:
         aln_ret.append(run_aln(i))
-        print(aln_ret)
     sam_files = p.map(run_samse, aln_ret)
     bam_files = p.map(run_samtools_view, sam_files)
     sorted_bam_files = p.map(run_picard, bam_files)
