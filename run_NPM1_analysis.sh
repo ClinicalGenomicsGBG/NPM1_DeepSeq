@@ -15,7 +15,7 @@ DATE=$(date +"%Y_%m_%d_%H_%M_%S")
 
 FASTQDIR=$1
 OUTDIR=$2
-TMPDIR=$OUTDIR/tmp/NPM1_$DATE
+TMPDIR=$OUTDIR/tmp_NPM1_$DATE
 REF=$3
 EMAILS=$4
 
@@ -61,9 +61,9 @@ STAMP=$(date +"%y%m%d_%H%M")
 #done
 
 echo "Copying single csv file to outdir"
-cp $TMPDIR/NPM1_UDS_final_result.tsv $OUTDIR/NPM1_UDS_final_result_$(basename $FASTQDIR)_$DAY.tsv
+cp $TMPDIR/NPM1_UDS_final_result.tsv $OUTDIR/NPM1_UDS_final_result_${MYNAME}_${STAMP}.tsv
 
 #Remove everything in tmpdir, leaving only results.
 rm -rf $TMPDIR
 
-echo "Done at `date` ! Your output is located here: $OUTDIR/NPM1_${MYNAME}_${STAMP}.tsv"
+echo "Done at `date` ! Your output is located here: $OUTDIR/NPM1_UDS_final_result_${MYNAME}_${STAMP}.tsv"
