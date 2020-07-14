@@ -63,6 +63,6 @@ echo "Copying single csv file to outdir"
 cp $TMPDIR/NPM1_UDS_final_result.tsv $OUTDIR/NPM1_UDS_final_result_$(basename $FASTQDIR)_$DAY.tsv
 
 #Remove everything in tmpdir, leaving only results.
-#rm -rf $TMPDIR
+rm -rf $TMPDIR
 
 echo "Done at `date` ! Your output is located here: $OUTDIR/NPM1_$(basename $FASTQDIR)_$DAY.csv"
