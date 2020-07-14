@@ -9,7 +9,7 @@ Conda will install the rest of the requirements to a new environment automatical
 
 How to run:
 
-    bash run_NPM1_analysis.sh <full path to folder containing all *fastq.gz> <full path to output folder> <full path human reference fasta> <email adress to recieve result email (OPTIONAL, requires extra configuration)>
+    bash run_NPM1_analysis.sh <abolute path to folder containing all *fastq.gz> <abolute path to output folder> <absolute path human reference fasta> <email adress to recieve result email (OPTIONAL, requires extra configuration)>
 Note: Arguments are positional.
 
 Some notes on speed: The pipeline will adapt the # of cores used to what is available on the system. It is recommended that the machine has at least as many logical cores as samples are being run. The pipeline has been tested and works on a 4c/8t machine with 16GB RAM. This pipeline is fairly I/O intensive, either RAID disks or SSD is recommended for optimal speed.
