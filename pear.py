@@ -32,7 +32,6 @@ def run_pear(fq):
     for fileitem in fq[::2]:
         file1 = str(fq.pop(0))
         file2 = str(fq.pop(0))
-        #call(f"pear -f {file1} -r {file2} -j 16 -o {file1[:-3] + '.pear'}", shell=True)
         call(["pear", "-f", file1, "-r", file2, "-j", str(cpu_count()), "-o", file1 + ".pear"], shell=False, env=my_env)
 
 if __name__ == "__main__":
