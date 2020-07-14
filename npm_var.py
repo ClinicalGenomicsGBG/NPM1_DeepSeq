@@ -14,7 +14,6 @@ def main_worker(bamfile):
     import npm_seq
     my_env = os.environ.copy()
     mut_dict = npm_seq.mut_dict
-    #wt_dict = npm_seq.wt_dict
     wildtypes = npm_seq.wildtypes # This line is new
     mut_list = npm_seq.mut_list
     print(f"running command: {['samtools', 'view', bamfile, '-o', bamfile.rsplit('.', 1)[0] + '_tmp.sam']}")
@@ -38,8 +37,7 @@ def main_worker(bamfile):
             cur_seq = sam_line.split("\t")[9]
             for mutname in mut_list:
                 mutstr = mut_dict[mutname][0]
-                #wtstr = wt_dict[mutname]
-                wtstr = wildtypes[int(mut_dict[mutname][1])] # This line is new
+                wtstr = wildtypes[int(mut_dict[mutname][1])]
                 if mutstr.upper() in cur_seq:
                     count_mut[mutname] += 1
                 elif wtstr.upper() in cur_seq:
@@ -71,7 +69,6 @@ def create_csv(samples):
 
         pd_mut = pd.DataFrame.from_dict(combined, orient='index', columns=[f"totreads: {totreads}", "mutated", "wildtype", "%mut"])
         pd_mut.index.name = fname
-        #pd_wt = pd.DataFrame.from_dict(wts, orient='index', columns=["wildtype"])
         with open(str(fname) + ".csv", "w") as csv_out:
             pd_mut.to_csv(csv_out, sep=',', decimal='.', header=fname, quotechar='"', quoting=csv.QUOTE_ALL)
             all_csv_files.append(os.path.abspath(str(fname) + ".csv"))
@@ -86,15 +83,10 @@ def create_csv(samples):
 
 # This function will create a single csv file out of all the others 
 def merge_csv(filelist, outfilename="NPM1_" + datetime.datetime.now().strftime("%y%m%d") + "_all_samples.csv"):
-    #import datetime
-    #today = datetime.datetime.now().strftime("%y%m%d")
-    #outfilename = "NPM1_" + today + "_all_samples.csv"
-    #outfilename = "NPM1_all_samples.csv"
     with open(outfilename, "a+") as mergefile:
         for csvfile in filelist:
             cur_fn = csvfile.rsplit("/", 1)[1]
             cur_fn_noext = cur_fn.rsplit(".", 1)[0]
-            #mergefile.write(f'"{cur_fn_noext}"' + "\n")
             with open(csvfile, "r") as a:
                 for line in a:
                     mergefile.write(line)
