@@ -51,10 +51,12 @@ def main_worker(bamfile):
 
 # This function will create separate csv files for all samples conaining only the mutation types which have been detected in the sample
 # and return a list of paths to all those files to be used in the merge_csv function
-def create_csv(samples):
+def create_csv(samples):    
+    import csv
     dataframes = []
     all_csv_files = []
     attachment_all_csv_files = []
+    all_tsv_files = []
     for sample in samples:
         fname = sample[0]
         totreads = sample[1]
@@ -70,16 +72,16 @@ def create_csv(samples):
         pd_mut = pd.DataFrame.from_dict(combined, orient='index', columns=[f"totreads: {totreads}", "mutated", "wildtype", "%mut"])
         pd_mut.index.name = fname
         #pd_wt = pd.DataFrame.from_dict(wts, orient='index', columns=["wildtype"])
-
         with open(str(fname) + ".csv", "w") as csv_out:
-            import csv
             pd_mut.to_csv(csv_out, sep=',', decimal='.', header=fname, quotechar='"', quoting=csv.QUOTE_ALL)
             all_csv_files.append(os.path.abspath(str(fname) + ".csv"))
         with open("attachment_" + str(fname) + ".csv", "w") as csv_attachment:
-            import csv
             pd_mut.to_csv(csv_attachment, sep=';', decimal=',', header=fname, quoting=csv.QUOTE_NONE)
             attachment_all_csv_files.append(os.path.abspath("attachment_" + str(fname) + ".csv"))
-    return all_csv_files, attachment_all_csv_files
+        with open(str(fname) + ".tsv", "w") as tsv_out:
+            pd_mut.to_csv(tsv_out, sep='\t', decimal='.', header=fname, quoting=csv.QUOTE_NONE)
+            all_tsv_files.append(os.path.abspath(str(fname) + ".tsv"))
+    return all_csv_files, attachment_all_csv_files, all_tsv_files
 
 
 # This function will create a single csv file out of all the others 
@@ -140,9 +142,7 @@ def send_mail(subj, body, bifogad_fil, recipients=[], sender='NPM1@gu.se'):
 if __name__ == "__main__":
     
     filelist = argv[1]
-    #this needs to go!
     run_name = str(argv[2]).split("/")[-1]
-    #bleh!
     
     try:    
         email = list(argv[3].split(","))
@@ -150,7 +150,6 @@ if __name__ == "__main__":
         email = []
     with open(filelist, "r") as sorted:
         bam_list = sorted.read().splitlines()
-    #print(bam_list)
     p = Pool(cpu_count())
     work_done = p.map(main_worker, bam_list)
     print(work_done)
@@ -160,8 +159,10 @@ if __name__ == "__main__":
     all_csv_files = create_csv(work_done)
     print(all_csv_files)
     merge_csv(all_csv_files[0], "NPM1_all_samples.csv")
+    merge_csv(all_csv_files[2], "NPM1_UDS_final_result.tsv")
     to_mail = merge_csv(all_csv_files[1], f"NPM1_{run_name}_" + datetime.datetime.now().strftime("%y%m%d") + ".csv")
-    # Customise these to your liking
+    
+    ### Feel free to customise mailsubject and mailbody to your liking
     mailsubject=f"NPM1 analysis report on run: {run_name}"
     mailbody = f"""
 Your NPM1 analysis is complete!
