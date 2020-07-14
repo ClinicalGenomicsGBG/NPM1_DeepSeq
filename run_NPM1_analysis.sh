@@ -6,6 +6,7 @@ scriptdir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 echo "SCRIPTDIR: $scriptdir"
 
+# Creates a Conda environment named NPM_DeepSeq which contains the required programs
 echo "Establishing conda environment at `date`"
 conda env create -f $scriptdir/environment.yaml 2> /dev/null
 echo ".. Done at `date`"
@@ -24,7 +25,7 @@ script1=$scriptdir/pear.py
 script2=$scriptdir/pipeline_amplicon_pear.py
 script3=$scriptdir/npm_var.py
 
-#Copies the fastq files to tmp directory to prepare to start working
+# Copies the fastq files to tmp directory to prepare to start working
 mkdir -p $TMPDIR
 echo "Copying $FASTQDIR/*.fastq.gz to $TMPDIR"
 for file in $(ls $FASTQDIR/*.fastq.gz) ; do
@@ -34,11 +35,11 @@ done
 ls $TMPDIR/*.fastq.gz > $TMPDIR/files.txt
 cd $TMPDIR
 
-#Gunzips and runs PEAR on the samples
+# Gunzips and runs PEAR on the samples
 echo "Running: $PYTHON $script1 $TMPDIR/files.txt"
 conda run -n NPM1_DeepSeq $script1 $TMPDIR/files.txt
 
-#Does QC, mapping etc
+# Does QC, mapping etc
 echo "Running: $PYTHON $script2 $TMPDIR"
 conda run -n NPM1_DeepSeq $script2 $TMPDIR $REF
 
@@ -49,9 +50,9 @@ conda run -n NPM1_DeepSeq $script2 $TMPDIR $REF
 echo "Running: $PYTHON $script3 $TMPDIR/bamfiles.txt $FASTQDIR $EMAILS"
 conda run -n NPM1_DeepSeq $script3 $TMPDIR/bamfiles.txt $FASTQDIR $EMAILS
 
-DAY=$(date +"%y%m%d")
+STAMP=$(date +"%y%m%d_%H%M")
 
-#Uncomment the following block to get all of the csv files
+# Uncomment the following block to get all of the csv files into the results directory
 #echo "Copy loop"
 #filestocopy=$(ls $TMPDIR | grep ".csv")
 #for csv in $filestocopy ; do
@@ -65,4 +66,4 @@ cp $TMPDIR/NPM1_UDS_final_result.tsv $OUTDIR/NPM1_UDS_final_result_$(basename $F
 #Remove everything in tmpdir, leaving only results.
 rm -rf $TMPDIR
 
-echo "Done at `date` ! Your output is located here: $OUTDIR/NPM1_$(basename $FASTQDIR)_$DAY.csv"
+echo "Done at `date` ! Your output is located here: $OUTDIR/NPM1_${MYNAME}_${STAMP}.csv"
