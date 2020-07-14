@@ -66,4 +66,4 @@ cp $TMPDIR/NPM1_UDS_final_result.tsv $OUTDIR/NPM1_UDS_final_result_$(basename $F
 #Remove everything in tmpdir, leaving only results.
 rm -rf $TMPDIR
 
-echo "Done at `date` ! Your output is located here: $OUTDIR/NPM1_${MYNAME}_${STAMP}.csv"
+echo "Done at `date` ! Your output is located here: $OUTDIR/NPM1_${MYNAME}_${STAMP}.tsv"
