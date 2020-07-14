@@ -27,7 +27,6 @@ def unzipper(infile):
 
 
 def run_pear(fq):
-    #fq = zip(fq, fq)
     my_env = environ.copy()
     for fileitem in fq[::2]:
         file1 = str(fq.pop(0))
