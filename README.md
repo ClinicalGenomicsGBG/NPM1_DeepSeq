@@ -24,6 +24,6 @@ The first time the pipeline is run, it will need to download and install all the
 You will need to configure the function `send_mail` in `npm_var.py` in order to send emails. Specifically you need to input your smtp server into the `host` variable on line 121.  
 
 ### Variants:
-You can see which variants are being searched for in the `npm_seq.py` file. You can modify this file locally if you want to add remove variants from the list.
+You can see which variants are being searched for in the `npm_seq.py` file. You can modify this file locally if you want to add or remove possible variants from the analysis results.
 
 Please report any bugs or issues on the GitHub "Issues" tab or email alvar.almstedt@gu.se
