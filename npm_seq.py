@@ -1,97 +1,96 @@
 #!/usr/bin/env python
 
-mut_dict = {'NPM1_Mut_A': ['TCTCTGTCTGGCAGTG', 0], # Start Grupp 1
-            'NPM1_Mut_B': ['TCTCTGCATGGCAGTG', 0],
-            'NPM1_Mut_D': ['TCTCTGCCTGGCAGTG', 0],
-            'NPM1_Mut_H': ['TCTCTGAGGAGCAGTG', 0],
-            'NPM1_Mut_I': ['TCTCTGCTTGGCAGTG', 0],
-            'NPM1_Mut_L': ['TCTCTGTTTGGCAGTG', 0],
-            'NPM1_Mut_K': ['TCTCTGCCAGGCAGTG', 0],
-            'NPM1_Mut_N': ['TCTCTGTCGGGCAGTG', 0],
-            'NPM1_Mut_R': ['TCTCTGTATGGCAGTG', 0],
-            'NPM1_Mut_X': ['TCTCTGTTCCGCAGTG', 0],
-            'NPM1_Mut_Y': ['TCTCTGCCGAGCAGTG', 0],
-            'NPM1_Mut_Z': ['TCTCTGTAGGGCAGTG', 0],
-            'NPM1_Mut_Ivey-1': ['tctctgCAGGgcagtg', 0],
-            'NPM1_Mut_Ivey-2': ['tctctgCGTGgcagtg', 0],
-            'NPM1_Mut_Ivey-3': ['tctctgCAAAgcagtg', 0],
-            'NPM1_Mut_Ivey-4': ['tctctgCTCGgcagtg', 0],
-            'NPM1_Mut_Ivey-5': ['tctctgCCGGgcagtg', 0],
-            'NPM1_Mut_Ivey-6': ['tctctgTTCGgcagtg', 0],
-            'NPM1_Mut_DD-2': ['tctctgCTGGgcagtg', 0],
-            'NPM1_Mut_DD-3': ['tctctgCAGAgcagtg', 0],
-            'NPM1_Mut_DD-4': ['tctctgTGTGgcagtg', 0],
-            'NPM1_Mut_DD-5': ['tctctgTCAGgcagtg', 0],
-            'NPM1_Mut_DD-7': ['tctctgTAAGgcagtg', 0],
-            'NPM1_Mut_COSMIC-5': ['tctctgGCCAgcagtg', 0],
-            'NPM1_Mut_COMSIC-9': ['tctctgCAAGgcagtg', 0],
-            'NPM1_Mut_Ivey-7': ['tctctgCCGTTcagtg', 0],
-            'NPM1_Mut_RB-9': ['tctctgTAGCgcagtg', 0],
-            'NPM1_Mut_RB-10': ['tctctgCCACgcagtg', 0],
-            'NPM1_Mut_RB-16': ['tctctgTCATgcagtg', 0],
-            'NPM1_Mut_RB-17': ['tctctgCTTGgcagtg', 0],
-            'NPM1_Mut_RB-24': ['tctctgTACGgcagtg', 0],
-            'NPM1_Mut_RB-26': ['tctctgCGGAgcagtg', 0],
-            'NPM1_Mut_RB-20': ['tctctgCGCCgcagtg', 0],
-            'NPM1_Mut_COSMIC-6': ['aagatcGCTGtctggc', 0],
-            'NPM1_Mut_Ivey-10': ['gatctcACAAtggcag', 0],
-            'NPM1_Mut_RB-7': ['atctctCCCGggcagt', 0],
-            'NPM1_Mut_RB-19': ['agatctATGCgcagtg', 0],
+mut_dict = {'c.860_863dupTCTG, p.(Trp288CysfsTer12)': ['TCTCTGTCTGGCAGTG', 0], # Start Grupp 1
+            'c.863_864insCATG,p.(Trp288CysfsTer12)': ['TCTCTGCATGGCAGTG', 0],
+            'c.863_864insCCTG, p.(Trp288CysfsTer12)': ['TCTCTGCCTGGCAGTG', 0],
+            'c.863_864insAGGA, p.(Trp288Ter)': ['TCTCTGAGGAGCAGTG', 0],
+            'c.863_864insCTTG, p.(Trp288CysfsTer12)': ['TCTCTGCTTGGCAGTG', 0],
+            'c.863_864insTTTG, p.(Trp288CysfsTer12)': ['TCTCTGTTTGGCAGTG', 0],
+            'c.863_864insCCAG, p.(Trp288CysfsTer12)': ['TCTCTGCCAGGCAGTG', 0],
+            'c.863_864insTCGG, p.(Trp288CysfsTer12)': ['TCTCTGTCGGGCAGTG', 0],
+            'c.863_864insTATG, p.(Trp288CysfsTer12)': ['TCTCTGTATGGCAGTG', 0],
+            'c.863_864insTTCC, p.(Trp288CysfsTer12)': ['TCTCTGTTCCGCAGTG', 0],
+            'c.863_864insCCGA, p.(Trp288CysfsTer12)': ['TCTCTGCCGAGCAGTG', 0],
+            'c.863_864insTAGG, p.(Trp288CysfsTer12)': ['TCTCTGTAGGGCAGTG', 0],
+            'c.863_864insCAGG, p.(Trp288CysfsTer12)': ['tctctgCAGGgcagtg', 0],
+            'c.863_864insCGTG, p.(Trp288CysfsTer12)': ['tctctgCGTGgcagtg', 0],
+            'c.863_864insCAAA, p.(Trp288CysfsTer12)': ['tctctgCAAAgcagtg', 0],
+            'c.863_864insCTCG, p.(Trp288CysfsTer12)': ['tctctgCTCGgcagtg', 0],
+            'c.863_864insCCGG, p.(Trp288CysfsTer12)': ['tctctgCCGGgcagtg', 0],
+            'c.863_864insTTCG, p.(Trp288CysfsTer12)': ['tctctgTTCGgcagtg', 0],
+            'c.863_864insCTGG, p.(Trp288CysfsTer12)': ['tctctgCTGGgcagtg', 0],
+            'c.863_864insCAGA, p.(Trp288CysfsTer12)': ['tctctgCAGAgcagtg', 0],
+            'c.863_864insTGTG, p.(Trp288CysfsTer12)': ['tctctgTGTGgcagtg', 0],
+            'c.863_864insTCAG, p.(Trp288CysfsTer12)': ['tctctgTCAGgcagtg', 0],
+            'c.863_864insTAAG, p.(Trp288CysfsTer12)': ['tctctgTAAGgcagtg', 0],
+            'c.865_866insCAGC, p.(Gln289ProfsTer11)': ['tctctgGCCAgcagtg', 0],
+            'c.863_864insCAAG, p.(Trp288CysfsTer12)': ['tctctgCAAGgcagtg', 0],
+            'c.864delinsCCGTT, p.(Trp288CysfsTer12)': ['tctctgCCGTTcagtg', 0],
+            'c.863_864insTAGC, p.(Trp288CysfsTer12)': ['tctctgTAGCgcagtg', 0],
+            'c.863_864insTCAT, p.(Trp288CysfsTer12)': ['tctctgTCATgcagtg', 0],
+            'c.863_864insCTTG, p.(Trp288CysfsTer12)': ['tctctgCTTGgcagtg', 0],
+            'c.863_864insTACG, p.(Trp288CysfsTer12)': ['tctctgTACGgcagtg', 0],
+            'c.863_864insCGGA, p.(Trp288CysfsTer12)': ['tctctgCGGAgcagtg', 0],
+            'c.863_864insCGCC, p.(Trp288CysfsTer12)': ['tctctgCGCCgcagtg', 0],
+            'c.859_860insGCTG,p.(Leu287ArgfsTer13)': ['aagatcGCTGtctggc', 0],
+            'c.861_862insACAA, p.(Trp288ThrfsTer12)': ['gatctcACAAtggcag', 0],
+            'c.861_863delinsATGC, p.(Trp288CysfsTer11)': ['agatctATGCgcagtg', 0],
             # Start Grupp 2
-            'NPM1_Mut_DD-9': ['tggcagAGGAtggagg', 1],
-            'NPM1_Mut_DD-10': ['tggcagAGAAtggagg', 1],
-            'NPM1_Mut_DD-11': ['tggcagAGACtggagg', 1],
-            'NPM1_Mut_DD-12': ['tggcagCGCTtggagg', 1],
-            'NPM1_Mut_Ivey-12': ['tggcagCGGAtggagg', 1],
-            'NPM1_Mut_COSMIC-10': ['tggcagCGGCtggagg', 1],
-            'NPM1_Mut_RB-28': ['tggcagCGTTCggagg', 1],
-            'NPM1_Mut_RB-15': ['tggcagTCCAtggagg', 1],
-            'NPM1_Mut_ZD': ['TGGCAGAGGCTGGAGG', 1],
+            'c.867_868insAGGA,p.(Trp290ArgfsTer10)': ['tggcagAGGAtggagg', 1],
+            'c.867_868insAGAA,p.(Trp290ArgfsTer10)': ['tggcagAGAAtggagg', 1],
+            'c.867_868insAGAC, p.(Trp290ArgfsTer10)': ['tggcagAGACtggagg', 1],
+            'c.867_868insCGCT,p.(Trp290ArgfsTer10)': ['tggcagCGCTtggagg', 1],
+            'c.867_868insCGCT,p.(Trp290ArgfsTer10)': ['tggcagCGGAtggagg', 1],
+            'c.867_868insCGGC, p.(Trp290ArgfsTer10)': ['tggcagCGGCtggagg', 1],
+            'c.868delinsCGTTC, p.(Trp290ArgfsTer10)': ['tggcagCGTTCggagg', 1],
+            'c.868_869insCCAT, p.(Trp290SerfsTer10)': ['tggcagTCCAtggagg', 1],
+            'c.867_868insAGGC, p.(Trp290ArgfsTer10)': ['TGGCAGAGGCTGGAGG', 1],
             # Start Grupp 3
-            'NPM1_Mut_S': ['CTGGCAGTGTTTTTCTCGAGGAAGT', 2],
-            'NPM1_Mut_T': ['CTGGCAGTGCATGGCTCGAGGAAGT', 2],
-            'NPM1_Mut_RB-1': ['ctggcagtCTCTTGCCCaagtctct', 2],
-            'NPM1_Mut_RB-2': ['ctggcagtCCCTGGAGAaagtctct', 2],
-            'NPM1_Mut_RB-3': ['ctggcagtCCCTCGCCCaagtctct', 2],
-            'NPM1_Mut_RB-4': ['ctggcagtGCTTCGCCaagtctctt', 2],
-            'NPM1_Mut_RB-5': ['ctggcagtGTTTTTCAAaagtctct', 2],
-            'NPM1_Mut_RB-6': ['ctggcagtCTCTTTCTAaagtctct', 2],
-            'NPM1_Mut_RB-8': ['ctggcagtCCCTTTCCAaagtctct', 2],
-            'NPM1_Mut_RB-11': ['ctctggcagCGTTTCCaggaagtct', 2],
-            'NPM1_Mut_RB-21': ['tggcagtgCTGCTCCCaagtctctt', 2],
-            'NPM1_Mut_RB-22': ['ctggcagtTATTTTCCCaagtctct', 2],
-            'NPM1_Mut_RB-23': ['ctggcagtCTTTCTCCCaagtctct', 2],
-            'NPM1_Mut_Ivey-13': ['tggcagtCTTTCGCTCACgtctctt', 2],
-            'NPM1_Mut_Ivey-14': ['tggcagtgTTTTGCTCaagtctctt', 2],
-            'NPM1_Mut_Ivey-15': ['tggcagtgTTTTTCCCaagtctctt', 2],
-            'NPM1_Mut_RB-25': ['ctggcagCggaTGGCCgaagtctct', 2],
-            'NPM1_Mut_RB-27': ['ctggcagCggaTTCCggaagtctct', 2],
-            'NPM1_Mut_RB-29': ['ctggcagtggaTGGAggaagtctct', 2],
-            'NPM1_Mut_RB-30': ['ctctggcTCCGATTTGCggaagtct', 2],
-            'NPM1_Mut_Ivey-8': ['ctctgTCAAGACTTTCTTAaagtct', 2],
-            'NPM1_Mut_Ivey-9': ['tctgTCGGAGTCTCGGCGGACtctc', 2],
-            'NPM1_Mut_DD-13': ['tggcagGGGGTGGGGAATCtctctt', 2],
-            'NPM1_Mut_RB-31': ['ctggcagtATCTGGGGGCCCtctct', 2],
-            'NPM1_Mut_RB-18': ['ctggcaAGATTTCTTAATTCgtctc', 2],
-            'NPM1_Mut_XI': ['CTGGCAGGGGTTGGCCCGGGTCTCT', 2], # added 190527
-            'NPM1_Mut_YU': ['CTGGCAGTGGTTGGCGGAAGTCTCT', 2], # added 190527
-            'NPM1_Mut_XC': ['TGGCAGCGTTTCGGGGACATCTCTT', 2], # added 190527
-            'NPM1_Mut_XK': ['CTGGCAGTCGGTTTCTTTGCTCTCTTT', 2], # added 190527
-            'NPM1_Mut_KI-1': ['CTGGCAGCGGTTCGGGGCAGTCTCT', 2], # added 191106
+            'c.869_870insTTTTTCTC, p.(Trp290CysfsTer13)': ['CTGGCAGTGTTTTTCTCGAGGAAGT', 2],
+            'c.869_870insCATGGCTC, p.(Trp290CysfsTer13)': ['CTGGCAGTGCATGGCTCGAGGAAGT', 2],
+            'c.869_873delinsCTCTTGCCC, p.(Trp290SerfsTer10)': ['ctggcagtCTCTTGCCCaagtctct', 2],
+            'c.869_873delinsCCCTGGAGA, p.(Trp290SerfsTer10)': ['ctggcagtCCCTGGAGAaagtctct', 2],
+            'c.869_873delinsCCCTCGCCC, p.(Trp290SerfsTer10)': ['ctggcagtCCCTCGCCCaagtctct', 2],
+            'c.870_873delinsCTTCGCC, p.(Trp290_Arg291delinsCysPheAla)': ['ctggcagtGCTTCGCCaagtctctt', 2],
+            'c.870_873delinsTTTTTCAA, p.(Trp290CysfsTer10)': ['ctggcagtGTTTTTCAAaagtctct', 2],
+            'c.869_873delinsCTCTTTCTA, p.(Trp290SerfsTer10)': ['ctggcagtCTCTTTCTAaagtctct', 2],
+            'c.863_873delinsCCCGGGCAGT, p.(Trp288SerfsTer12)': ['atctctCCCGggcagtaagtctctt', 2], #moved 2020-09-01
+            'c.869_873delinsCCCTTTCCA, p.(Trp290SerfsTer10)': ['ctggcagtCCCTTTCCAaagtctct', 2],
+            'c.864_875delins13, p.(Trp288CysfsTer11)': ['tctctgCCACgcagtggaggtctct', 0], #moved 2020-09-01
+            'c.868_870delinsCGTTTCC, p.(Trp290ArgfsTer10)': ['ctctggcagCGTTTCCaggaagtct', 2],
+            'c.870_873delinsCTGCTCCC, p.(Trp290CysfsTer10)': ['tggcagtgCTGCTCCCaagtctctt', 2],
+            'c.869_873delinsATTTTCCC, p.(Trp290LeufsTer10)': ['ctggcagtTATTTTCCCaagtctct', 2],
+            'c.869_873delinsCTTTCTCCC, p.(Trp290SerfsTer10)': ['ctggcagtCTTTCTCCCaagtctct', 2],
+            'c.869_873delinsCTTTCTCCC, p.(Trp290SerfsTer10)': ['tggcagtCTTTCGCTCACgtctctt', 2],
+            'c.870_873delinsTTTTGCTC, p.(Trp290CysfsTer10)': ['tggcagtgTTTTGCTCaagtctctt', 2],
+            'c.870_873delinsTTTTTCCC, p.(Trp290CysfsTer10)': ['tggcagtgTTTTTCCCaagtctctt', 2],
+            'c.868_872delinsCGGATGGCC,  p.(Trp290ArgfsTer10)': ['ctggcagCggaTGGCCgaagtctct', 2],
+            'c.868_871delinsCGGATTCC, p.(Trp290ArgfsTer10)': ['ctggcagCggaTTCCggaagtctct', 2],
+            'c.868_871dup, p.(Arg291MetfsTer9)': ['ctggcagtggaTGGAggaagtctct', 2],
+            'c.866_871delinsTCCGATTTGC, p.(Gln289LeufsTer11)': ['ctctggcTCCGATTTGCggaagtct', 2],
+            'c.864_873delins14, p.(Trp288CysfsTer12)': ['ctctgTCAAGACTTTCTTAaagtct', 2],
+            'c.864_876delins17, p.(Trp288CysfsTer12)': ['tctgTCGGAGTCTCGGCGGACtctc', 2],
+            'c.868_876delins13, p.(Trp290GlyfsTer10)': ['tggcagGGGGTGGGGAATCtctctt', 2],
+            'c.869_876delinsATCTGGGGGCCC, p.(Trp290TyrfsTer10)': ['ctggcagtATCTGGGGGCCCtctct', 2],
+            'c.867_875delins14, p.(Trp290AspfsTer12)': ['ctggcaAGATTTCTTAATTCgtctc', 2],
+            'c.868_875delinsGGGTTGGCCCGG, p.(Trp290GlyfsTer10)': ['CTGGCAGGGGTTGGCCCGGGTCTCT', 2], # added 190527
+            'c.871delinsTTGGC, p.(Arg291LeufsTer9)': ['CTGGCAGTGGTTGGCGGAAGTCTCT', 2], # added 190527
+            'c.868_876delins13, p.(Trp290ArgfsTer10)': ['TGGCAGCGTTTCGGGGACATCTCTT', 2], # added 190527
+            'c.869_876delinsCGGTTTCTTTGC, p.(Trp290SerfsTer10)': ['CTGGCAGTCGGTTTCTTTGCTCTCTTT', 2], # added 190527
+            'c.868_874delinsCGGTTCGGGGC, p.(Trp290ArgfsTer10)': ['CTGGCAGCGGTTCGGGGCAGTCTCT', 2], # added 191106
             # Start Grupp 4
-            'NPM1_Mut_ZF': ['ACTCTGGCAGCTTCTCCATGGAGGA', 3],
-            'NPM1_Mut_ZG': ['CTCTGGCAGCGGATGGCTGGAGGAA', 3],
-            'NPM1_Mut_Ivey-11': ['agatctcTCCATGCTCCtggaggaa', 3],
-            'NPM1_Mut_RB-12': ['agatctctgTACCTTCCtggaggaa', 3],
-            'NPM1_Mut_RB-13': ['aagatctctgCCGCGGagtggagga', 3],
-            'NPM1_Mut_2UM': ['AGATCTCTGTCACCTAGTGGAGGAA', 3], # added 190527
-            'NPM1_Mut_2YQ': ['AGATCTCTGCAGAAAAGTGGAGGAA', 3], # added 190527
-            'NPM1_Mut_KI-2': ['ATCTCTGGCAAAAAATGGAGGAAGT', 3], # added 200714
-            'NPM1_Mut_KGG-1': ['AGATCTCTGCACAGTTATGGAGGAA', 3]} # added 200714
-
+            'c.867_868insCTTCTCCA, p.(Trp290LeufsTer13)': ['ACTCTGGCAGCTTCTCCATGGAGGA', 3],
+            'c.867_868insCGGATGGC, p.(Trp290ArgfsTer13)': ['CTCTGGCAGCGGATGGCTGGAGGAA', 3],
+            'c.863_867delinsCCATGCTCC, p.(Trp288SerfsTer12)': ['agatctcTCCATGCTCCtggaggaa', 3],
+            'c.864_867delinsTACCTTCC, p.(Trp288CysfsTer12)': ['agatctctgTACCTTCCtggaggaa', 3],
+            'c.864_865delinsCCGCGG, p.(Trp288CysfsTer12)': ['aagatctctgCCGCGGagtggagga', 3],
+            'c.864_865delinsTCACCT, p.(Trp288CysfsTer12)': ['AGATCTCTGTCACCTAGTGGAGGAA', 3], # added 190527
+            'c.864_865delinsCAGAAA, p.(Trp288CysfsTer12)': ['AGATCTCTGCAGAAAAGTGGAGGAA', 3], # added 190527
+            'c.867delinsAAAAA, p.(Trp290LysfsTer10)': ['ATCTCTGGCAAAAAATGGAGGAAGT', 3], # added 200714
+            'c.864_867delinsCACAGTTA, p.(Trp288CysfsTer12)': ['AGATCTCTGCACAGTTATGGAGGAA', 3]} # added 200714
 
 # Wildtypes: Grupp 1, Grupp 2, Grupp 3, Grupp 4 
 wildtypes = ["AAGATCTCTGGCAGTG", "tctggcagtggaggaa", "TCTCTGGCAGTGGAGGAAGTCTCTT", "AAGATCTCTGGCAGTGGAGGAAGTC"]
 
 # List of the mutation names that will be looped through
-mut_list = ['NPM1_Mut_A', 'NPM1_Mut_B', 'NPM1_Mut_D', 'NPM1_Mut_H', 'NPM1_Mut_I', 'NPM1_Mut_L', 'NPM1_Mut_K', 'NPM1_Mut_N', 'NPM1_Mut_R', 'NPM1_Mut_X', 'NPM1_Mut_Y', 'NPM1_Mut_Z', 'NPM1_Mut_COSMIC-6', 'NPM1_Mut_Ivey-10', 'NPM1_Mut_Ivey-1', 'NPM1_Mut_Ivey-2', 'NPM1_Mut_Ivey-3', 'NPM1_Mut_Ivey-4', 'NPM1_Mut_Ivey-5', 'NPM1_Mut_Ivey-6', 'NPM1_Mut_DD-2', 'NPM1_Mut_DD-3', 'NPM1_Mut_DD-4', 'NPM1_Mut_DD-5', 'NPM1_Mut_DD-7', 'NPM1_Mut_COSMIC-5', 'NPM1_Mut_COMSIC-9', 'NPM1_Mut_Ivey-7', 'NPM1_Mut_RB-9', 'NPM1_Mut_RB-10', 'NPM1_Mut_RB-16', 'NPM1_Mut_RB-17', 'NPM1_Mut_RB-24', 'NPM1_Mut_RB-26', 'NPM1_Mut_RB-20', 'NPM1_Mut_RB-7', 'NPM1_Mut_RB-19', 'NPM1_Mut_DD-9', 'NPM1_Mut_DD-10', 'NPM1_Mut_DD-11', 'NPM1_Mut_DD-12', 'NPM1_Mut_Ivey-12', 'NPM1_Mut_COSMIC-10', 'NPM1_Mut_RB-28', 'NPM1_Mut_RB-15', 'NPM1_Mut_ZD', 'NPM1_Mut_RB-11', 'NPM1_Mut_DD-13', 'NPM1_Mut_S', 'NPM1_Mut_T', 'NPM1_Mut_RB-1', 'NPM1_Mut_RB-2', 'NPM1_Mut_RB-3', 'NPM1_Mut_RB-4', 'NPM1_Mut_RB-5', 'NPM1_Mut_RB-6', 'NPM1_Mut_RB-8', 'NPM1_Mut_RB-22', 'NPM1_Mut_RB-23', 'NPM1_Mut_Ivey-14', 'NPM1_Mut_Ivey-15', 'NPM1_Mut_RB-21', 'NPM1_Mut_Ivey-13', 'NPM1_Mut_RB-31', 'NPM1_Mut_RB-29', 'NPM1_Mut_RB-25', 'NPM1_Mut_RB-27', 'NPM1_Mut_RB-18', 'NPM1_Mut_XI', 'NPM1_Mut_YU', 'NPM1_Mut_XC', 'NPM1_Mut_XK', 'NPM1_Mut_RB-30', 'NPM1_Mut_Ivey-8', 'NPM1_Mut_Ivey-9', 'NPM1_Mut_RB-12', 'NPM1_Mut_RB-13', 'NPM1_Mut_Ivey-11', 'NPM1_Mut_ZG', 'NPM1_Mut_ZF', 'NPM1_Mut_2UM', 'NPM1_Mut_2YQ', 'NPM1_Mut_KI-1', 'NPM1_Mut_KI-2', 'NPM1_Mut_KGG-1']
+mut_list = sorted(list(mut_dict.keys()))
