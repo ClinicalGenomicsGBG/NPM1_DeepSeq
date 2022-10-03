@@ -88,7 +88,8 @@ mut_dict = {'c.860_863dupTCTG p.(Trp288CysfsTer12)': ['TCTCTGTCTGGCAGTG', 0], # 
             'c.864_865delinsTCACCT p.(Trp288CysfsTer12)': ['AGATCTCTGTCACCTAGTGGAGGAA', 3], # added 190527
             'c.864_865delinsCAGAAA p.(Trp288CysfsTer12)': ['AGATCTCTGCAGAAAAGTGGAGGAA', 3], # added 190527
             'c.867delinsAAAAA p.(Trp290LysfsTer10)': ['ATCTCTGGCAAAAAATGGAGGAAGT', 3], # added 200714
-            'c.864_867delinsCACAGTTA p.(Trp288CysfsTer12)': ['AGATCTCTGCACAGTTATGGAGGAA', 3]} # added 200714
+            'c.864_867delinsCACAGTTA p.(Trp288CysfsTer12)': ['AGATCTCTGCACAGTTATGGAGGAA', 3], # added 200714
+            'c.862_867delinsACGTGCAAAA, p.(Trp288ThrfsTer12)': ['AAGATCTCACGTGCAAAATGGAGGA', 3]} # added 221003
 
 # Wildtypes: Grupp 1, Grupp 2, Grupp 3, Grupp 4 
 wildtypes = ["AAGATCTCTGGCAGTG", "tctggcagtggaggaa", "TCTCTGGCAGTGGAGGAAGTCTCTT", "AAGATCTCTGGCAGTGGAGGAAGTC"]
