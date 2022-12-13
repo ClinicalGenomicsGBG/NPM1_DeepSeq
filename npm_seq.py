@@ -35,6 +35,7 @@ mut_dict = {'c.860_863dupTCTG p.(Trp288CysfsTer12)': ['TCTCTGTCTGGCAGTG', 0], # 
             'c.859_860insGCTG p.(Leu287ArgfsTer13)': ['aagatcGCTGtctggc', 0],
             'c.861_862insACAA p.(Trp288ThrfsTer12)': ['gatctcACAAtggcag', 0],
             'c.861_863delinsATGC p.(Trp288CysfsTer11)': ['agatctATGCgcagtg', 0],
+            'c.863_864insTGCT, p.(Trp288CysfsTer12)': ['TCTCTGTGCTGCAGTG', 0], #added 2022-12-12
             # Start Grupp 2
             'c.867_868insAGGA p.(Trp290ArgfsTer10)': ['tggcagAGGAtggagg', 1],
             'c.867_868insAGAA p.(Trp290ArgfsTer10)': ['tggcagAGAAtggagg', 1],
@@ -57,7 +58,7 @@ mut_dict = {'c.860_863dupTCTG p.(Trp288CysfsTer12)': ['TCTCTGTCTGGCAGTG', 0], # 
             'c.869_873delinsCTCTTTCTA p.(Trp290SerfsTer10)': ['ctggcagtCTCTTTCTAaagtctct', 2],
             'c.863_873delinsCCCGGGCAGT p.(Trp288SerfsTer12)': ['atctctCCCGggcagtaagtctctt', 2], #moved 2020-09-01
             'c.869_873delinsCCCTTTCCA p.(Trp290SerfsTer10)': ['ctggcagtCCCTTTCCAaagtctct', 2],
-            'c.864_875delins13 p.(Trp288CysfsTer11)': ['tctctgCCACgcagtggaggtctct', 0], #moved 2020-09-01
+            'c.864_875delins13 p.(Trp288CysfsTer11)': ['tctctgCCACgcagtggaggtctct', 2], #moved 2020-09-01, fixed 2022-12-13
             'c.868_870delinsCGTTTCC p.(Trp290ArgfsTer10)': ['ctctggcagCGTTTCCaggaagtct', 2],
             'c.870_873delinsCTGCTCCC p.(Trp290CysfsTer10)': ['tggcagtgCTGCTCCCaagtctctt', 2],
             'c.869_873delinsATTTTCCC p.(Trp290LeufsTer10)': ['ctggcagtTATTTTCCCaagtctct', 2],
